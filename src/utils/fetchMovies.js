@@ -30,5 +30,5 @@ export async function getMovieCast(movieId) {
 export async function getMovieReviews(movieId) {
   return await axios(
     `movie/${movieId}/reviews?api_key=${API_KEY}&language=en-US`
-  ).then(resp => resp.data);
+  ).then(resp => resp.data.results);
 }

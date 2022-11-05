@@ -7,6 +7,22 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+a:hover, 
+li:hover::marker {
+  color: blueviolet;
+}
+
+li::marker {
+  content: '\261B';
 }
 
 code {

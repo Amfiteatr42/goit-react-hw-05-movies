@@ -1,13 +1,14 @@
-import { Link, Outlet } from 'react-router-dom';
+import { Outlet } from 'react-router-dom';
+import { Nav, Link } from './SharedLayout.styled';
 
 export function SharedLayout() {
   return (
     <>
       <header>
-        <nav>
+        <Nav>
           <Link to="/">Home</Link>
           <Link to="movies">Movies</Link>
-        </nav>
+        </Nav>
       </header>
       <Outlet />
     </>

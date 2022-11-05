@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { getTrendMovies } from 'utils/fetchMovies';
+import { ListItem } from './Home.styled';
 
 export function Home() {
   const [trends, setTrends] = useState([]);
@@ -16,9 +17,9 @@ export function Home() {
     <>
       {trends.map(({ title, id }) => {
         return (
-          <li key={id}>
+          <ListItem key={id}>
             <Link to={`movies/${id}`}>{title}</Link>
-          </li>
+          </ListItem>
         );
       })}
     </>

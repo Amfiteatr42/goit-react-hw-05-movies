@@ -3,8 +3,8 @@ import { useParams } from 'react-router-dom';
 import { getMovieReviews } from 'utils/fetchMovies';
 import { Author, RewiewText } from './Reviews.styled';
 
-export function Reviews() {
-  const [review, setReview] = useState([]);
+function Reviews() {
+  const [review, setReview] = useState(null);
   const { movieId } = useParams();
 
   useEffect(() => {
@@ -15,18 +15,24 @@ export function Reviews() {
     getCast();
   }, [movieId]);
 
+  if (!review) return;
+
   return (
-    <ul>
+    <>
       {!!review.length ? (
-        review.map(({ id, author, content }) => (
-          <li key={id}>
-            <Author>{author}</Author>
-            <RewiewText>{content}</RewiewText>
-          </li>
-        ))
+        <ul>
+          {review.map(({ id, author, content }) => (
+            <li key={id}>
+              <Author>{author}</Author>
+              <RewiewText>{content}</RewiewText>
+            </li>
+          ))}
+        </ul>
       ) : (
-        <div>There's no review for this movie yet</div>
+        <div>There's no review added yet :(</div>
       )}
-    </ul>
+    </>
   );
 }
+
+export default Reviews;

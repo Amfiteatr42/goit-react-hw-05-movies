@@ -15,3 +15,8 @@ export const Link = styled(NavLink)`
 export const Header = styled.header`
   border-bottom: 1px solid blueviolet;
 `;
+export const Container = styled.div`
+  padding: 0 30px;
+  margin: 0 auto;
+  max-width: 1200px;
+`;

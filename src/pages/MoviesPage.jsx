@@ -3,13 +3,11 @@ import { useState, useEffect } from 'react';
 import { getMoviesBySearch } from 'utils/fetchMovies';
 import { Input, SearchBtn, Form, ListItem } from './MoviesPage.styled';
 
-export function MoviesPage() {
+function MoviesPage() {
   const [searchResults, setSearchResults] = useState([]);
   const [searchParams, setSearchParams] = useSearchParams();
-  const query = searchParams.get('query');
-
+  const query = searchParams.get('query') ?? '';
   const location = useLocation();
-  console.log(location);
 
   useEffect(() => {
     if (query === '') return;
@@ -54,3 +52,5 @@ export function MoviesPage() {
     </>
   );
 }
+
+export default MoviesPage;

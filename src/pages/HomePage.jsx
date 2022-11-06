@@ -1,6 +1,6 @@
 import { Home } from 'components/Home/Home';
 
-export function HomePage() {
+function HomePage() {
   return (
     <div>
       <h2>This week's hot movies:</h2>
@@ -10,3 +10,5 @@ export function HomePage() {
     </div>
   );
 }
+
+export default HomePage;

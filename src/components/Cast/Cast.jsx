@@ -3,18 +3,18 @@ import { useParams } from 'react-router-dom';
 import { getMovieCast } from 'utils/fetchMovies';
 import { Item, List, Portrait } from './Cast.styled';
 
-export function Cast() {
+function Cast() {
   const [actors, setActors] = useState([]);
   const { movieId } = useParams();
 
   useEffect(() => {
     async function getCast() {
       const { cast } = await getMovieCast(movieId);
-      console.log(cast);
       setActors([...cast]);
     }
     getCast();
   }, [movieId]);
+
   return (
     <List>
       {actors.map(({ character, name, profile_path, id }, idx) => {
@@ -35,3 +35,5 @@ export function Cast() {
     </List>
   );
 }
+
+export default Cast;

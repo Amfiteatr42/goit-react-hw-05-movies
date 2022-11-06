@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { Link, Outlet, useLocation, useParams } from 'react-router-dom';
+import { Outlet, useLocation, useParams } from 'react-router-dom';
 import { getMovieDetails } from 'utils/fetchMovies';
 import {
   BackLink,
@@ -9,7 +9,7 @@ import {
   Wrapper,
 } from './MovieDetails.styled';
 
-export function MovieDetails() {
+function MovieDetails() {
   const [movieDetails, setMovieDetails] = useState({});
   const { movieId } = useParams();
   const location = useLocation();
@@ -45,11 +45,17 @@ export function MovieDetails() {
           <p>{overview}</p>
           <SecondaryTitle>Genres</SecondaryTitle>
           <p>{genres.map(({ name }) => `${name} `)}</p>
-          <DetailsLink to={'cast'}>Cast</DetailsLink>
-          <DetailsLink to={'reviews'}>Reviews</DetailsLink>
+          <DetailsLink to={'cast'} state={{ from: backLinkHref }}>
+            Cast
+          </DetailsLink>
+          <DetailsLink to={'reviews'} state={{ from: backLinkHref }}>
+            Reviews
+          </DetailsLink>
         </div>
       </Wrapper>
       <Outlet />
     </>
   );
 }
+
+export default MovieDetails;

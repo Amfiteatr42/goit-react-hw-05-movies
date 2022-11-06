@@ -1,6 +1,7 @@
 import { Link, useLocation, useSearchParams } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import { getMoviesBySearch } from 'utils/fetchMovies';
+import { Input, SearchBtn, Form, ListItem } from './MoviesPage.styled';
 
 export function MoviesPage() {
   const [searchResults, setSearchResults] = useState([]);
@@ -30,23 +31,23 @@ export function MoviesPage() {
   return (
     <>
       <h2>Movie finder:</h2>
-      <form onSubmit={onSearch}>
-        <input
+      <Form onSubmit={onSearch}>
+        <Input
           name="query"
           type="text"
           placeholder="Enter name of movie"
           required
         />
-        <button type="submit">Search</button>
-      </form>
+        <SearchBtn type="submit">Search</SearchBtn>
+      </Form>
       {query && (
         <ul>
           {searchResults.map(({ title, id }) => (
-            <li key={id}>
+            <ListItem key={id}>
               <Link to={`${id}`} state={{ from: location }}>
                 {title}
               </Link>
-            </li>
+            </ListItem>
           ))}
         </ul>
       )}

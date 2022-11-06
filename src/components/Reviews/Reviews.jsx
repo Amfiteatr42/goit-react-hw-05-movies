@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { getMovieReviews } from 'utils/fetchMovies';
+import { Author, RewiewText } from './Reviews.styled';
 
 export function Reviews() {
   const [review, setReview] = useState([]);
@@ -19,8 +20,8 @@ export function Reviews() {
       {!!review.length ? (
         review.map(({ id, author, content }) => (
           <li key={id}>
-            <h3>{author}</h3>
-            <p>{content}</p>
+            <Author>{author}</Author>
+            <RewiewText>{content}</RewiewText>
           </li>
         ))
       ) : (

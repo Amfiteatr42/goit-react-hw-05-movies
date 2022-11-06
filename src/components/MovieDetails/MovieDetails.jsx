@@ -1,6 +1,13 @@
 import { useEffect, useState } from 'react';
 import { Link, Outlet, useLocation, useParams } from 'react-router-dom';
 import { getMovieDetails } from 'utils/fetchMovies';
+import {
+  BackLink,
+  DetailsLink,
+  Poster,
+  SecondaryTitle,
+  Wrapper,
+} from './MovieDetails.styled';
 
 export function MovieDetails() {
   const [movieDetails, setMovieDetails] = useState({});
@@ -24,21 +31,24 @@ export function MovieDetails() {
   }, [movieId]);
   return (
     <>
-      <div>
-        <Link to={backLinkHref}>Go back</Link>
-        <img
+      <BackLink to={backLinkHref}>&#8592; Go back</BackLink>
+      <Wrapper>
+        <Poster
           src={`https://image.tmdb.org/t/p/w300${poster_path}`}
           alt="poster"
+          width="200"
         />
-        <h2>{title}</h2>
-        <p>{vote_average}</p>
-        <h3>Overviews</h3>
-        <p>{overview}</p>
-        <h3>Genres</h3>
-        <p>{genres.map(({ name }) => `${name} `)}</p>
-      </div>
-      <Link to={'cast'}>Cast</Link>
-      <Link to={'reviews'}>Reviews</Link>
+        <div>
+          <h2>{title}</h2>
+          <p>{vote_average}</p>
+          <SecondaryTitle>Overviews</SecondaryTitle>
+          <p>{overview}</p>
+          <SecondaryTitle>Genres</SecondaryTitle>
+          <p>{genres.map(({ name }) => `${name} `)}</p>
+          <DetailsLink to={'cast'}>Cast</DetailsLink>
+          <DetailsLink to={'reviews'}>Reviews</DetailsLink>
+        </div>
+      </Wrapper>
       <Outlet />
     </>
   );
